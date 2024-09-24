@@ -1,0 +1,34 @@
+void setup() {
+Serial.begin(9600);  
+pinMode(13,OUTPUT);
+int led=13;
+int ledR=12;
+}
+
+void loop() {
+float letturasens= analogRead(A0);
+float luce= letturasens*(5.0/1023.0);
+
+if((luce>0.0)&&(luce<0.4)) {
+  Serial.println("BUIO ");
+  Serial.println(luce);
+  digitalWrite(13,HIGH);
+     digitalWrite(12,LOW);
+ 
+ 
+}
+if((luce>0.41)&&(luce<0.9)) {
+  Serial.println("LUMINOSITA' NORMALE");
+  Serial.println(luce);
+  digitalWrite(13,LOW);
+   digitalWrite(12,LOW);
+}
+
+  if((luce>3.1)&&(luce<4.4)) {
+  Serial.println("LUCE FORTE"); 
+  Serial.println(luce);  
+  digitalWrite(12,HIGH);
+  digitalWrite(13,LOW);
+}
+delay(500);  
+}
